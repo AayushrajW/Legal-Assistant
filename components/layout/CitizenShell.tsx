@@ -68,11 +68,11 @@ export function CitizenShell({ children }: { children: React.ReactNode }) {
             href={item.href}
             onClick={() => setOpen(false)}
             className={cn(
-              "flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium",
-              active ? "bg-white/12 text-white" : "text-white/75 hover:bg-white/8 hover:text-white",
+              "flex min-h-12 items-center gap-3 rounded-xl px-3 text-sm font-medium",
+              active ? "bg-white/15 text-white" : "text-white/70 hover:bg-white/10 hover:text-white",
             )}
           >
-            <Icon className="size-4" aria-hidden />
+            <Icon className="size-5" aria-hidden />
             <span className="flex-1">{item.label}</span>
             {"badge" in item && item.badge ? (
               <span
@@ -90,7 +90,7 @@ export function CitizenShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen bg-bg">
-      <aside className="hidden w-[260px] shrink-0 bg-sidebar text-white md:flex md:flex-col">
+      <aside className="sticky top-0 hidden h-svh w-[260px] shrink-0 bg-sidebar text-white md:flex md:flex-col">
         <div className="px-4 py-5">
           <BrandMark inverted />
         </div>
@@ -130,7 +130,7 @@ export function CitizenShell({ children }: { children: React.ReactNode }) {
         <main id="main" className="flex-1 pb-20 md:pb-0">
           {children}
         </main>
-        <DisclaimerBar compact />
+        <DisclaimerBar />
         <nav
           aria-label="Mobile"
           className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-4 border-t border-border bg-surface md:hidden"

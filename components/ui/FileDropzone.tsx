@@ -143,7 +143,7 @@ export function Stepper({
               "rounded-full px-3 py-1 text-xs font-medium",
               state === "current" && "bg-accent text-white",
               state === "done" && "bg-success/15 text-success",
-              state === "todo" && "bg-navy/8 text-demo",
+              state === "todo" && "bg-navy/10 text-demo",
             )}
           >
             {i + 1}. {step}

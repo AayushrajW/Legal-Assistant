@@ -20,7 +20,7 @@ export function CaseCard({ record }: { record: CaseRecord }) {
   return (
     <Link
       href={href}
-      className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-4 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)] hover:border-accent/30"
+      className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-4 shadow-card hover:border-accent/30"
     >
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">

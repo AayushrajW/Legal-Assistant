@@ -8,7 +8,7 @@ const tones: Record<Tone, string> = {
   success: "bg-success/10 text-success",
   warning: "bg-warning/10 text-warning",
   urgent: "bg-danger/10 text-danger",
-  demo: "bg-navy/8 text-demo",
+  demo: "bg-navy/10 text-demo",
   ai: "bg-ai/10 text-ai",
   neutral: "bg-navy/5 text-navy",
 };
@@ -42,7 +42,7 @@ export function Card({
 }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("rounded-2xl border border-border bg-surface p-5 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]", className)}
+      className={cn("rounded-2xl border border-border bg-surface p-5 shadow-card", className)}
       {...props}
     >
       {children}
@@ -128,14 +128,9 @@ export function Skeleton({ className }: { className?: string }) {
   return <div className={cn("animate-pulse rounded-2xl bg-navy/10", className)} />;
 }
 
-export function DisclaimerBar({ compact = false }: { compact?: boolean }) {
+export function DisclaimerBar() {
   return (
-    <p
-      className={cn(
-        "border-t border-border bg-navy/[0.03] text-demo",
-        compact ? "px-4 py-2 text-xs" : "px-4 py-2.5 text-sm",
-      )}
-    >
+    <p className="border-t border-border bg-navy/[0.03] px-4 py-2 text-xs text-demo">
       NyayaSetu explains and organises information. It is not a lawyer and does not give
       legal advice.
     </p>

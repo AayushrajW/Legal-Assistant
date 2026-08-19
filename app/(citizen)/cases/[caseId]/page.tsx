@@ -152,7 +152,7 @@ export default function CaseAnalysisPage() {
             <Badge>{MATTER_LABELS[record.category]}</Badge>
           </div>
         </div>
-        <Button variant="ai" className="xl:hidden" onClick={() => setAiOpen(true)}>
+        <Button variant="accent" className="xl:hidden" onClick={() => setAiOpen(true)}>
           <Sparkles className="size-4" aria-hidden />
           Ask AI
         </Button>
@@ -177,9 +177,20 @@ export default function CaseAnalysisPage() {
         <div>
           {tab === "overview" ? (
             <div className="grid gap-4 lg:grid-cols-2">
-              <Card className="lg:col-span-2">
+              <Card>
                 <h2 className="font-bold text-navy">Case summary</h2>
                 <p className="mt-2 text-ink/90">{analysis.plainLanguageSummary}</p>
+              </Card>
+              <Card>
+                <h2 className="font-bold text-navy">Analysis progress</h2>
+                <p className="mt-2 text-3xl font-extrabold text-accent">{progress}% completed</p>
+                <ul className="mt-3 space-y-2 text-sm">
+                  {steps.map((s) => (
+                    <li key={s.label} className={s.done ? "text-success" : "text-demo"}>
+                      {s.done ? "✓" : "○"} {s.label}
+                    </li>
+                  ))}
+                </ul>
               </Card>
               <Card>
                 <h2 className="font-bold text-navy">What you need to know</h2>
@@ -190,17 +201,6 @@ export default function CaseAnalysisPage() {
                 </ul>
               </Card>
               <Card>
-                <h2 className="font-bold text-navy">Analysis progress</h2>
-                <p className="mt-2 text-3xl font-extrabold text-accent">{progress}%</p>
-                <ul className="mt-3 space-y-2 text-sm">
-                  {steps.map((s) => (
-                    <li key={s.label} className={s.done ? "text-success" : "text-demo"}>
-                      {s.done ? "✓" : "○"} {s.label}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-              <Card className="lg:col-span-2">
                 <h2 className="font-bold text-navy">Next step</h2>
                 <p className="mt-2 text-sm text-ink">{firstStep?.text ?? "Open the action plan for a full list."}</p>
                 <Button className="mt-4" variant="primary" onClick={() => setTab("plan")}>
@@ -373,7 +373,7 @@ export default function CaseAnalysisPage() {
         </div>
 
         <aside className="hidden xl:block">
-          <div className="sticky top-6 rounded-2xl border border-border bg-surface p-4 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]">
+          <div className="sticky top-6 rounded-2xl border border-border bg-surface p-4 shadow-card">
             <AskAiPanel caseId={caseId} />
           </div>
         </aside>

@@ -1,18 +1,12 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f3f5fb;
-  --foreground: #1b1f3b;
-}
-
-@theme inline {
+@theme {
   --color-bg: #f3f5fb;
   --color-surface: #ffffff;
   --color-ink: #1b1f3b;
   --color-navy: #151b4b;
   --color-navy-800: #0f1440;
   --color-sidebar: #151b4b;
-  --color-primary: #151b4b;
   --color-accent: #6e56cf;
   --color-accent-600: #5b45b8;
   --color-info: #3b82c4;
@@ -22,10 +16,9 @@
   --color-ai: #6e56cf;
   --color-demo: #6b7288;
   --color-border: #e4e7f0;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-plus-jakarta);
-  --font-serif: var(--font-plus-jakarta);
+  --color-background: #f3f5fb;
+  --color-foreground: #1b1f3b;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --shadow-card: 0 8px 24px rgb(21 27 75 / 0.06);
 }
 
@@ -47,7 +40,6 @@ html {
 body {
   background: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
 }
 
 :focus-visible {

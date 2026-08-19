@@ -24,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${plusJakarta.variable} min-h-screen antialiased`}>
+    <html lang="en" className={`${plusJakarta.variable} ${plusJakarta.className}`}>
+      <body className="min-h-screen bg-bg font-sans text-ink antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-navy focus:px-3 focus:py-2 focus:text-white"

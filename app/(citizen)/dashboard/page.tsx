@@ -15,28 +15,28 @@ const ACTIONS = [
   {
     href: "/cases/new",
     title: "Understand a Document",
-    cta: "Upload now",
+    cta: "Upload Now",
     icon: FileSearch,
     tint: "bg-info/15 text-info",
   },
   {
     href: "/cases/new",
     title: "Describe a Legal Problem",
-    cta: "Start now",
+    cta: "Start Now",
     icon: Search,
     tint: "bg-warning/15 text-warning",
   },
   {
     href: "/cases",
     title: "AI Legal Assistant",
-    cta: "Ask now",
+    cta: "Ask Now",
     icon: MessageCircle,
     tint: "bg-accent/15 text-accent",
   },
   {
     href: "/lawyers",
     title: "Find a Lawyer",
-    cta: "Browse now",
+    cta: "Browse Now",
     icon: Briefcase,
     tint: "bg-success/15 text-success",
   },
@@ -81,18 +81,14 @@ export default function DashboardPage() {
   return (
     <div className="px-4 py-6 lg:px-8">
       <div className="mb-6 md:hidden">
-        <label htmlFor="help-search" className="sr-only">
-          How can we help you today?
-        </label>
-        <form action="/cases/new" className="flex min-h-12 items-center gap-2 rounded-2xl border border-border bg-surface px-4 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]">
+        <Link
+          href="/cases/new"
+          aria-label="How can we help you today?"
+          className="flex min-h-12 items-center gap-2 rounded-2xl border border-border bg-surface px-4 shadow-card"
+        >
           <Search className="size-4 text-demo" aria-hidden />
-          <input
-            id="help-search"
-            name="q"
-            className="w-full bg-transparent text-sm outline-none"
-            placeholder="How can we help you today?"
-          />
-        </form>
+          <span className="text-sm text-demo">How can we help you today?</span>
+        </Link>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-4">
@@ -120,7 +116,7 @@ export default function DashboardPage() {
           <Link
             key={action.title}
             href={action.href}
-            className="rounded-2xl border border-border bg-surface p-5 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)] hover:border-accent/30"
+            className="rounded-2xl border border-border bg-surface p-5 shadow-card hover:border-accent/30"
           >
             <span className={`inline-flex size-11 items-center justify-center rounded-2xl ${action.tint}`}>
               <action.icon className="size-5" aria-hidden />

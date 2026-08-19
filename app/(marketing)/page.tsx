@@ -1,4 +1,5 @@
 import { APP_NAME } from "@/lib/constants";
+import { DashboardPreview } from "@/components/marketing/DashboardPreview";
 import { FileSearch, ListChecks, MessageCircle, Shield } from "lucide-react";
 import Link from "next/link";
 
@@ -36,24 +37,7 @@ export default function LandingPage() {
               This prototype uses sample files. It does not file cases or contact courts.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-bg p-6 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]">
-            <p className="text-sm font-bold text-navy">A typical path</p>
-            <ol className="mt-4 space-y-4">
-              {[
-                "Bring a PDF, photo, or a story in your own words.",
-                "See a plain-language explanation, dates, and gaps.",
-                "Use a checklist of papers and questions for an advocate.",
-                "If you need a person, browse sample advocate profiles (preview only).",
-              ].map((item, i) => (
-                <li key={item} className="flex gap-3 text-ink">
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
-                    {i + 1}
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ol>
-          </div>
+          <DashboardPreview />
         </div>
       </section>
 
@@ -84,7 +68,7 @@ export default function LandingPage() {
           ].map((item) => (
             <article
               key={item.title}
-              className="rounded-2xl border border-border bg-surface p-5 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]"
+              className="rounded-2xl border border-border bg-surface p-5 shadow-card"
             >
               <item.icon className="size-6 text-accent" aria-hidden />
               <h3 className="mt-3 font-bold text-navy">{item.title}</h3>
