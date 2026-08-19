@@ -25,7 +25,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded px-2 py-0.5 text-xs font-semibold tracking-wide",
+        "inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
         tones[tone],
         className,
       )}
@@ -42,7 +42,7 @@ export function Card({
 }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("rounded-lg border border-border bg-surface p-5", className)}
+      className={cn("rounded-2xl border border-border bg-surface p-5 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]", className)}
       {...props}
     >
       {children}
@@ -67,7 +67,7 @@ export function Section({
     <section id={id} className="scroll-mt-24 space-y-3">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 className="font-serif text-xl text-navy">{title}</h2>
+          <h2 className="text-xl font-bold text-navy">{title}</h2>
           {description ? <p className="mt-1 text-sm text-demo">{description}</p> : null}
         </div>
         {actions}
@@ -87,7 +87,7 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-dashed border-border px-6 py-10 text-center">
+    <div className="rounded-2xl border border-dashed border-border bg-surface px-6 py-10 text-center">
       <p className="font-medium text-navy">{title}</p>
       <p className="mx-auto mt-2 max-w-md text-sm text-demo">{body}</p>
       {action ? <div className="mt-5 flex justify-center">{action}</div> : null}
@@ -116,7 +116,7 @@ export function Alert({
   return (
     <div
       role={tone === "danger" ? "alert" : "status"}
-      className={cn("rounded-md border px-4 py-3 text-sm", alertClass[tone])}
+      className={cn("rounded-xl border px-4 py-3 text-sm", alertClass[tone])}
     >
       <p className="font-semibold text-navy">{title}</p>
       {children ? <div className="mt-1 text-ink/90">{children}</div> : null}
@@ -125,7 +125,7 @@ export function Alert({
 }
 
 export function Skeleton({ className }: { className?: string }) {
-  return <div className={cn("animate-pulse rounded-md bg-navy/10", className)} />;
+  return <div className={cn("animate-pulse rounded-2xl bg-navy/10", className)} />;
 }
 
 export function DisclaimerBar({ compact = false }: { compact?: boolean }) {

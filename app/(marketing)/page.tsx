@@ -8,10 +8,10 @@ export default function LandingPage() {
       <section className="border-b border-border bg-surface">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-2 md:py-20">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-info">
+            <p className="text-sm font-semibold uppercase tracking-wider text-accent">
               For people, not law firms
             </p>
-            <h1 className="mt-3 font-serif text-4xl leading-tight text-navy md:text-5xl">
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight text-navy md:text-5xl">
               Understand a legal paper before you panic.
             </h1>
             <p className="mt-4 max-w-xl text-lg text-ink/85">
@@ -21,13 +21,13 @@ export default function LandingPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/sign-up"
-                className="inline-flex min-h-12 items-center rounded-md bg-navy px-5 font-medium text-white"
+                className="inline-flex min-h-12 items-center rounded-xl bg-accent px-5 font-semibold text-white"
               >
                 Start with a demo case
               </Link>
               <Link
                 href="/sign-in"
-                className="inline-flex min-h-12 items-center rounded-md border border-navy/20 px-5 font-medium text-navy"
+                className="inline-flex min-h-12 items-center rounded-xl border border-border px-5 font-semibold text-navy"
               >
                 Sign in
               </Link>
@@ -36,8 +36,8 @@ export default function LandingPage() {
               This prototype uses sample files. It does not file cases or contact courts.
             </p>
           </div>
-          <div className="rounded-lg border border-border bg-bg p-6">
-            <p className="text-sm font-semibold text-navy">A typical path</p>
+          <div className="rounded-2xl border border-border bg-bg p-6 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]">
+            <p className="text-sm font-bold text-navy">A typical path</p>
             <ol className="mt-4 space-y-4">
               {[
                 "Bring a PDF, photo, or a story in your own words.",
@@ -46,7 +46,7 @@ export default function LandingPage() {
                 "If you need a person, browse sample advocate profiles (preview only).",
               ].map((item, i) => (
                 <li key={item} className="flex gap-3 text-ink">
-                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-navy text-sm text-white">
+                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
                     {i + 1}
                   </span>
                   {item}
@@ -58,7 +58,7 @@ export default function LandingPage() {
       </section>
 
       <section id="how-it-works" className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="font-serif text-3xl text-navy">How it works</h2>
+        <h2 className="text-3xl font-extrabold text-navy">How it works</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -82,9 +82,12 @@ export default function LandingPage() {
               body: "No “you will win”. No pretending to be your lawyer. Official help links stay visible.",
             },
           ].map((item) => (
-            <article key={item.title} className="rounded-lg border border-border bg-surface p-5">
-              <item.icon className="size-6 text-navy" aria-hidden />
-              <h3 className="mt-3 font-semibold text-navy">{item.title}</h3>
+            <article
+              key={item.title}
+              className="rounded-2xl border border-border bg-surface p-5 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)]"
+            >
+              <item.icon className="size-6 text-accent" aria-hidden />
+              <h3 className="mt-3 font-bold text-navy">{item.title}</h3>
               <p className="mt-2 text-sm text-ink/80">{item.body}</p>
             </article>
           ))}
@@ -93,10 +96,10 @@ export default function LandingPage() {
 
       <section className="border-y border-border bg-surface">
         <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="font-serif text-3xl text-navy">Trust, and limits</h2>
+          <h2 className="text-3xl font-extrabold text-navy">Trust, and limits</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             <div>
-              <h3 className="font-semibold text-navy">What {APP_NAME} is</h3>
+              <h3 className="font-bold text-navy">What {APP_NAME} is</h3>
               <ul className="mt-3 list-disc space-y-2 pl-5 text-ink/85">
                 <li>A reading and organising tool for ordinary citizens in India.</li>
                 <li>A place to prepare questions and a paper checklist.</li>
@@ -104,7 +107,7 @@ export default function LandingPage() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-navy">What it is not</h3>
+              <h3 className="font-bold text-navy">What it is not</h3>
               <ul className="mt-3 list-disc space-y-2 pl-5 text-ink/85">
                 <li>Not an advocate, law firm, or court filing service.</li>
                 <li>Not a guarantee of any outcome.</li>
@@ -116,14 +119,14 @@ export default function LandingPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="font-serif text-3xl text-navy">Made for first-time users</h2>
+        <h2 className="text-3xl font-extrabold text-navy">Made for first-time users</h2>
         <p className="mt-3 max-w-2xl text-ink/85">
           Large buttons, short sentences, and details hidden until you ask. Works on a phone,
           because that is how most people will open a notice.
         </p>
         <Link
           href="/sign-up"
-          className="mt-8 inline-flex min-h-12 items-center rounded-md bg-navy px-5 font-medium text-white"
+          className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-accent px-5 font-semibold text-white"
         >
           Open the citizen demo
         </Link>

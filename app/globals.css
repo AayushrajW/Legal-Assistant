@@ -1,28 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f5f2;
-  --foreground: #1c2430;
+  --background: #f3f5fb;
+  --foreground: #1b1f3b;
 }
 
 @theme inline {
-  --color-bg: #f7f5f2;
+  --color-bg: #f3f5fb;
   --color-surface: #ffffff;
-  --color-ink: #1c2430;
-  --color-navy: #0b1f3a;
-  --color-navy-800: #132a4a;
-  --color-primary: #0e3a5d;
-  --color-info: #2563a8;
-  --color-success: #2d6a4f;
-  --color-warning: #b45309;
-  --color-danger: #b42318;
-  --color-ai: #5b4b8a;
-  --color-demo: #5c6570;
-  --color-border: #d9d4cc;
+  --color-ink: #1b1f3b;
+  --color-navy: #151b4b;
+  --color-navy-800: #0f1440;
+  --color-sidebar: #151b4b;
+  --color-primary: #151b4b;
+  --color-accent: #6e56cf;
+  --color-accent-600: #5b45b8;
+  --color-info: #3b82c4;
+  --color-success: #16a34a;
+  --color-warning: #ea7a2f;
+  --color-danger: #dc3d3d;
+  --color-ai: #6e56cf;
+  --color-demo: #6b7288;
+  --color-border: #e4e7f0;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-ibm-plex-sans);
-  --font-serif: var(--font-source-serif);
+  --font-sans: var(--font-plus-jakarta);
+  --font-serif: var(--font-plus-jakarta);
+  --shadow-card: 0 8px 24px rgb(21 27 75 / 0.06);
 }
 
 html {
@@ -43,10 +47,10 @@ html {
 body {
   background: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-ibm-plex-sans), "IBM Plex Sans", sans-serif;
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", sans-serif;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-navy);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }

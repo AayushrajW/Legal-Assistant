@@ -1,7 +1,7 @@
 import { CASE_STATUS_LABEL, type CaseRecord } from "@/domain/case";
-import { MATTER_LABELS } from "@/lib/constants";
 import { formatDate } from "@/lib/format";
 import { Badge } from "@/components/ui/Display";
+import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 function statusTone(status: CaseRecord["status"]) {
@@ -20,18 +20,19 @@ export function CaseCard({ record }: { record: CaseRecord }) {
   return (
     <Link
       href={href}
-      className="block rounded-lg border border-border bg-surface p-4 hover:border-navy/30"
+      className="flex items-center gap-4 rounded-2xl border border-border bg-surface p-4 shadow-[0_8px_24px_rgb(21_27_75_/_0.06)] hover:border-accent/30"
     >
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge tone="demo">Demo</Badge>
-        <Badge tone={statusTone(record.status)}>{CASE_STATUS_LABEL[record.status]}</Badge>
-        <span className="text-xs text-demo">{MATTER_LABELS[record.category]}</span>
+      <div className="min-w-0 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="font-semibold text-navy">{record.title}</p>
+          {record.isDemo ? <Badge tone="demo">Demo</Badge> : null}
+        </div>
+        <p className="mt-1 text-xs text-demo">
+          {record.id} · Updated {formatDate(record.updatedAt)}
+        </p>
       </div>
-      <p className="mt-2 font-medium text-navy">{record.title}</p>
-      <p className="mt-1 text-sm text-demo">
-        {record.location?.city ? `${record.location.city} · ` : ""}
-        Updated {formatDate(record.updatedAt)}
-      </p>
+      <Badge tone={statusTone(record.status)}>{CASE_STATUS_LABEL[record.status]}</Badge>
+      <ChevronRight className="size-5 shrink-0 text-demo" aria-hidden />
     </Link>
   );
 }

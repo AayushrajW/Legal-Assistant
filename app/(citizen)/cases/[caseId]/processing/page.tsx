@@ -51,7 +51,7 @@ export default function ProcessingPage() {
 
   return (
     <div className="mx-auto max-w-lg px-4 py-16">
-      <h1 className="font-serif text-2xl text-navy">Preparing an explanation</h1>
+      <h1 className="text-2xl font-extrabold text-navy">Preparing an explanation</h1>
       <p className="mt-2 text-sm text-demo">
         {gemini
           ? "Gemini will draft a plain-language layout. It is not a lawyer and may be wrong."
@@ -61,8 +61,8 @@ export default function ProcessingPage() {
         {steps.map((label, i) => (
           <li
             key={label}
-            className={`rounded-md border px-4 py-3 text-sm ${
-              i <= active ? "border-navy/30 bg-navy/5 text-navy" : "border-border text-demo"
+            className={`rounded-2xl border px-4 py-3 text-sm ${
+              i <= active ? "border-accent/40 bg-accent/5 text-navy" : "border-border text-demo"
             }`}
           >
             {i < active ? "Done — " : i === active ? "In progress — " : "Waiting — "}

@@ -14,6 +14,13 @@ export interface LawyerProfile {
   bio: string;
   consultationNote: string;
   isDemo: true;
+  initials?: string;
+  sampleFeeLabel?: string;
+  sampleRating?: number;
+  sampleMatchPercent?: number;
+  sampleMatchReasons?: string[];
+  sampleCasesHandledLabel?: string;
+  sampleSuccessRateLabel?: string;
 }
 
 export interface LawyerFilters {

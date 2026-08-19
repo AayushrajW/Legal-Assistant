@@ -42,7 +42,7 @@ export default function SignUpPage() {
 
   return (
     <Card>
-      <h1 className="font-serif text-2xl text-navy">
+      <h1 className="text-2xl font-extrabold text-navy">
         {firebase ? "Create an account" : "Create a demo account"}
       </h1>
       <p className="mt-2 text-sm text-demo">{firebase ? FIREBASE_AUTH_NOTE : DEMO_AUTH_NOTE}</p>
@@ -76,7 +76,7 @@ export default function SignUpPage() {
             {error}
           </p>
         ) : null}
-        <Button type="submit" className="w-full" disabled={pending}>
+        <Button type="submit" variant="accent" className="w-full" disabled={pending}>
           {pending ? "Creating account…" : firebase ? "Create account" : "Enter the prototype"}
         </Button>
       </form>

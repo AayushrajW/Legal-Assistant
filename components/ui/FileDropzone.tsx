@@ -86,7 +86,7 @@ export function FileDropzone({
           handleFiles(e.dataTransfer.files);
         }}
         className={cn(
-          "flex w-full min-h-36 flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-navy/25 bg-navy/[0.02] px-4 py-8 text-center hover:bg-navy/[0.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy",
+          "flex w-full min-h-36 flex-col items-center justify-center gap-2 rounded-2xl border border-dashed border-accent/30 bg-accent/[0.04] px-4 py-8 text-center hover:bg-accent/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
         )}
       >
         <Upload className="size-6 text-navy" aria-hidden />
@@ -99,7 +99,7 @@ export function FileDropzone({
         </p>
       ) : null}
       {value ? (
-        <div className="mt-3 flex items-center justify-between gap-3 rounded-md border border-border bg-surface px-3 py-2">
+        <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-border bg-surface px-3 py-2">
           <div className="flex min-w-0 items-center gap-2">
             {value.kind === "image" ? (
               <ImageIcon className="size-4 shrink-0 text-info" aria-hidden />
@@ -141,7 +141,7 @@ export function Stepper({
             aria-current={state === "current" ? "step" : undefined}
             className={cn(
               "rounded-full px-3 py-1 text-xs font-medium",
-              state === "current" && "bg-navy text-white",
+              state === "current" && "bg-accent text-white",
               state === "done" && "bg-success/15 text-success",
               state === "todo" && "bg-navy/8 text-demo",
             )}

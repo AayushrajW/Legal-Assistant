@@ -3,23 +3,25 @@
 import { cn } from "@/lib/cn";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "danger" | "ai";
+type Variant = "primary" | "secondary" | "ghost" | "danger" | "ai" | "accent";
 type Size = "md" | "lg" | "sm";
 
 const variantClass: Record<Variant, string> = {
   primary:
     "bg-navy text-white hover:bg-navy-800 focus-visible:outline-navy shadow-sm",
+  accent:
+    "bg-accent text-white hover:bg-accent-600 focus-visible:outline-accent shadow-sm",
   secondary:
-    "border border-navy/20 bg-surface text-navy hover:bg-navy/5 focus-visible:outline-navy",
+    "border border-border bg-surface text-navy hover:bg-navy/5 focus-visible:outline-navy",
   ghost: "text-navy hover:bg-navy/5 focus-visible:outline-navy",
   danger: "bg-danger text-white hover:bg-danger/90 focus-visible:outline-danger",
-  ai: "bg-ai text-white hover:bg-ai/90 focus-visible:outline-ai",
+  ai: "bg-accent text-white hover:bg-accent-600 focus-visible:outline-accent",
 };
 
 const sizeClass: Record<Size, string> = {
-  sm: "min-h-11 px-3 text-sm",
-  md: "min-h-11 px-4 text-sm",
-  lg: "min-h-12 px-5 text-base",
+  sm: "min-h-10 rounded-lg px-3 text-sm",
+  md: "min-h-11 rounded-xl px-4 text-sm",
+  lg: "min-h-12 rounded-xl px-5 text-base",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -40,7 +42,7 @@ export function Button({
     <button
       type={type}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+        "inline-flex items-center justify-center gap-2 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
         variantClass[variant],
         sizeClass[size],
         className,
@@ -62,7 +64,7 @@ export function IconButton({ label, className, children, ...props }: IconButtonP
       type="button"
       aria-label={label}
       className={cn(
-        "inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-navy hover:bg-navy/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy disabled:opacity-50",
+        "inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl text-navy hover:bg-navy/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50",
         className,
       )}
       {...props}

@@ -46,7 +46,7 @@ export function AskAiPanel({ caseId }: { caseId: string }) {
       <div className="flex items-center gap-2 border-b border-border pb-3">
         <Sparkles className="size-4 text-ai" aria-hidden />
         <div>
-          <h2 className="font-serif text-lg text-navy">Ask AI</h2>
+          <h2 className="text-lg font-bold text-navy">Ask AI</h2>
           <p className="text-xs text-demo">
             {geminiReady() ? "Gemini · not a lawyer" : "Demo replies only · not a lawyer"}
           </p>
@@ -61,8 +61,8 @@ export function AskAiPanel({ caseId }: { caseId: string }) {
         {messages.map((m) => (
           <div
             key={m.id}
-            className={`rounded-md px-3 py-2 text-sm ${
-              m.role === "user" ? "bg-navy text-white" : "bg-ai/10 text-ink"
+            className={`rounded-2xl px-3 py-2 text-sm ${
+              m.role === "user" ? "ml-8 bg-navy text-white" : "mr-8 bg-bg text-ink"
             }`}
           >
             <p className="text-xs font-semibold opacity-80">
@@ -97,7 +97,7 @@ export function AskAiPanel({ caseId }: { caseId: string }) {
           id="ai-q"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="min-h-11 flex-1 rounded-md border border-border px-3 text-sm"
+          className="min-h-11 flex-1 rounded-2xl border border-border px-3 text-sm"
           placeholder="Ask about this case"
         />
         <Button type="submit" variant="ai">
