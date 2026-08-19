@@ -11,6 +11,7 @@ export interface LocalFile {
   byteSize: number;
   kind: "pdf" | "image" | "other";
   previewUrl?: string;
+  file?: File;
 }
 
 function classify(file: File): LocalFile {
@@ -26,6 +27,7 @@ function classify(file: File): LocalFile {
     byteSize: file.size,
     kind,
     previewUrl: kind === "image" ? URL.createObjectURL(file) : undefined,
+    file,
   };
 }
 
@@ -54,8 +56,8 @@ export function FileDropzone({
         setError("Use a PDF or an image (JPG, PNG, WebP).");
         return;
       }
-      if (file.size > 12 * 1024 * 1024) {
-        setError("Please choose a file under 12 MB for this demo.");
+      if (file.size > 4 * 1024 * 1024) {
+        setError("Please choose a file under 4 MB.");
         return;
       }
       setError(null);

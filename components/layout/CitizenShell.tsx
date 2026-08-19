@@ -2,6 +2,7 @@
 
 import { IconButton } from "@/components/ui/Button";
 import { DisclaimerBar } from "@/components/ui/Display";
+import { ModeBanner } from "@/components/layout/ModeBanner";
 import { useSession } from "@/hooks/useSession";
 import { APP_NAME, CITIZEN_NAV } from "@/lib/constants";
 import { cn } from "@/lib/cn";
@@ -104,6 +105,7 @@ export function CitizenShell({ children }: { children: React.ReactNode }) {
             </button>
           </div>
         ) : null}
+        <ModeBanner />
         <main id="main" className="flex-1 pb-20 md:pb-0">
           {children}
         </main>

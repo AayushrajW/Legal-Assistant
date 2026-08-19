@@ -1,5 +1,6 @@
 import { generateDemoAnalysis } from "@/data/mocks/generateAnalysis";
 import type { CaseId, CaseRecord } from "@/domain/case";
+import { fileToBase64, MAX_ANALYZE_BYTES, rememberCaseFile } from "@/lib/blobCache";
 import type { CaseRepository, CreateCaseInput, DocumentService } from "@/services/types";
 import { loadStore, updateStore } from "./store";
 
@@ -64,6 +65,18 @@ export const mockCaseRepository: CaseRepository = {
         analyses: { ...s.analyses, [id]: analysis },
       };
     });
+    if (input.document?.file) {
+      if (input.document.file.size > MAX_ANALYZE_BYTES) {
+        return { ok: false, code: "invalid", message: "Please choose a file under 4 MB." };
+      }
+      const base64 = await fileToBase64(input.document.file);
+      rememberCaseFile(id, {
+        fileName: input.document.fileName,
+        mimeType: input.document.mimeType,
+        byteSize: input.document.byteSize,
+        base64,
+      });
+    }
     return { ok: true, data: record };
   },
   async updateStatus(caseId, status) {

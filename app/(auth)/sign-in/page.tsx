@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Display";
 import { Input } from "@/components/ui/Field";
 import { useSession } from "@/hooks/useSession";
-import { DEMO_AUTH_NOTE } from "@/lib/constants";
+import { DEMO_AUTH_NOTE, FIREBASE_AUTH_NOTE } from "@/lib/constants";
+import { firebaseReady } from "@/lib/features";
 import { authService } from "@/services";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -15,7 +16,8 @@ function SignInForm() {
   const search = useSearchParams();
   const next = search.get("next") || "/dashboard";
   const { refresh } = useSession();
-  const [email, setEmail] = useState("meera.demo@nyayasetu.example");
+  const firebase = firebaseReady();
+  const [email, setEmail] = useState(firebase ? "" : "meera.demo@nyayasetu.example");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -38,7 +40,7 @@ function SignInForm() {
   return (
     <Card>
       <h1 className="font-serif text-2xl text-navy">Sign in</h1>
-      <p className="mt-2 text-sm text-demo">{DEMO_AUTH_NOTE}</p>
+      <p className="mt-2 text-sm text-demo">{firebase ? FIREBASE_AUTH_NOTE : DEMO_AUTH_NOTE}</p>
       <form className="mt-6 space-y-4" onSubmit={submit}>
         <Input
           id="email"
@@ -54,7 +56,7 @@ function SignInForm() {
           label="Password"
           type="password"
           autoComplete="current-password"
-          hint="Accepted but not checked against a server."
+          hint={firebase ? "Your Firebase password." : "Accepted but not checked against a server."}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -64,7 +66,7 @@ function SignInForm() {
           </p>
         ) : null}
         <Button type="submit" className="w-full" disabled={pending}>
-          {pending ? "Opening demo…" : "Continue"}
+          {pending ? "Signing in…" : "Continue"}
         </Button>
       </form>
       <p className="mt-4 text-sm">
@@ -75,7 +77,7 @@ function SignInForm() {
       <p className="mt-2 text-sm text-demo">
         New here?{" "}
         <Link className="font-medium text-navy underline-offset-2 hover:underline" href="/sign-up">
-          Create a demo account
+          Create an account
         </Link>
       </p>
     </Card>

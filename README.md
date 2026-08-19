@@ -2,20 +2,30 @@
 
 Citizen-first legal assistance prototype for India. AI helps people understand documents and situations. It does not replace qualified legal professionals.
 
-**Phase 1** is a polished front-end with mock data. There is no Firebase, Gemini, OCR, or live lawyer marketplace.
-
-See **[docs/PHASE1_IMPLEMENTATION_PLAN.md](docs/PHASE1_IMPLEMENTATION_PLAN.md)** for product scope, architecture, data models, design system, mock strategy, and implementation slices.
+See **[docs/PHASE1_IMPLEMENTATION_PLAN.md](docs/PHASE1_IMPLEMENTATION_PLAN.md)** for product scope and Phase 1 architecture.
 
 ## Run locally
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Demo sign-in: any email works. A sample citizen (`Meera Iyer`) and three fictional cases load in the browser.
+Default mode is **mock**: any email signs in, cases stay in the browser, explanations are sample data.
+
+## Phase 2 (opt-in)
+
+Copy `.env.example` to `.env.local` and set:
+
+- `NEXT_PUBLIC_DATA_SOURCE=firebase` plus the `NEXT_PUBLIC_FIREBASE_*` keys — real accounts, Firestore cases, Storage uploads. Deploy `firebase/firestore.rules` and `firebase/storage.rules`.
+- `NEXT_PUBLIC_AI_PROVIDER=gemini` plus server `GEMINI_API_KEY` — `/api/ai/analyze` and `/api/ai/chat` call Gemini. The key never ships to the browser.
+
+You can turn on Gemini without Firebase, or Firebase without Gemini. The UI still says NyayaSetu is not a lawyer.
+
+Not in this slice: lawyer portal, matching, consultations, payments, OCR pipeline beyond sending the file to Gemini, Hindi UI.
 
 ## Journey
 
@@ -23,13 +33,14 @@ Landing → Sign in → Dashboard → New case → Upload/describe → Processin
 
 ## Architecture
 
-- `app/` routes and layouts
-- `components/` UI and feature views
-- `domain/` typed models
-- `services/` interfaces; `services/mock/` is the Phase 1 implementation
-- `data/mocks/` demo cases, analyses, and advocate profiles
-
-Swap `services/index.ts` later for Firebase Auth, Firestore, Storage, and Gemini.
+- `app/` routes, including `app/api/ai/*`
+- `components/` UI
+- `domain/` models + Zod schema for model JSON
+- `services/` interfaces
+- `services/mock/` local prototype
+- `services/firebase/` Auth, Firestore, Storage
+- `services/gemini/` client wrappers around the API routes
+- `services/index.ts` composition root
 
 ## Scripts
 

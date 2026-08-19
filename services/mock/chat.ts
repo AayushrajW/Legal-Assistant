@@ -24,7 +24,18 @@ function replyFor(caseId: string, content: string): string {
   return `Demo reply — not from a live model. ${summary} Ask about dates, papers, or next steps if you want those sections restated. NyayaSetu is not a lawyer and does not give legal advice.`;
 }
 
-export const mockChatService: ChatService = {
+async function append(caseId: string, messages: ChatMessage[]) {
+  let next: ChatMessage[] = [];
+  updateStore((s) => {
+    next = [...(s.chats[caseId] ?? []), ...messages];
+    return { ...s, chats: { ...s.chats, [caseId]: next } };
+  });
+  return { ok: true as const, data: next };
+}
+
+export const mockChatService: ChatService & {
+  append: typeof append;
+} = {
   async list(caseId) {
     return { ok: true, data: loadStore().chats[caseId] ?? [] };
   },
@@ -49,11 +60,7 @@ export const mockChatService: ChatService = {
       createdAt: now,
       isDemo: true,
     };
-    let next: ChatMessage[] = [];
-    updateStore((s) => {
-      next = [...(s.chats[caseId] ?? []), userMsg, assistantMsg];
-      return { ...s, chats: { ...s.chats, [caseId]: next } };
-    });
-    return { ok: true, data: next };
+    return append(caseId, [userMsg, assistantMsg]);
   },
+  append,
 };

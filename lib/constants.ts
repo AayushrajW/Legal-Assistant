@@ -9,6 +9,9 @@ export const DISCLAIMER_LONG =
 export const DEMO_AUTH_NOTE =
   "Demo sign-in — accounts are not stored on a server yet. Any name and email will open the prototype.";
 
+export const FIREBASE_AUTH_NOTE =
+  "This form uses Firebase Authentication. NyayaSetu still does not give legal advice.";
+
 export const SESSION_COOKIE = "nyayasetu_session";
 
 export const CITIZEN_NAV = [

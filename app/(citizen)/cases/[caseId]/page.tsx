@@ -252,7 +252,9 @@ export default function CaseAnalysisPage() {
       >
         {analysis.legalInformation.map((item) => (
           <Card key={item.id} className="mb-3">
-            <Badge tone="demo">Demo · not verified</Badge>
+            <Badge tone="demo">
+              {item.verification === "model_unverified" ? "Model · not verified" : "Demo · not verified"}
+            </Badge>
             <p className="mt-2 font-medium text-navy">{item.title}</p>
             <p className="mt-1 text-sm text-ink/90">{item.summary}</p>
           </Card>

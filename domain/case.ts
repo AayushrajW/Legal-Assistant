@@ -36,7 +36,7 @@ export interface CaseRecord {
   createdAt: string;
   updatedAt: string;
   location?: CaseLocation;
-  isDemo: true;
+  isDemo: boolean;
 }
 
 export const CASE_STATUS_LABEL: Record<CaseStatus, string> = {

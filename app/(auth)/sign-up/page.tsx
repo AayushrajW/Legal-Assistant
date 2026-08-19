@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Display";
 import { Input } from "@/components/ui/Field";
 import { useSession } from "@/hooks/useSession";
-import { DEMO_AUTH_NOTE } from "@/lib/constants";
+import { DEMO_AUTH_NOTE, FIREBASE_AUTH_NOTE } from "@/lib/constants";
+import { firebaseReady } from "@/lib/features";
 import { authService } from "@/services";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -13,14 +14,27 @@ import { FormEvent, useState } from "react";
 export default function SignUpPage() {
   const router = useRouter();
   const { refresh } = useSession();
+  const firebase = firebaseReady();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function submit(e: FormEvent) {
     e.preventDefault();
     setPending(true);
-    await authService.signUp({ email, displayName: name, password: "demo" });
+    setError(null);
+    const result = await authService.signUp({
+      email,
+      displayName: name,
+      password: password || (firebase ? undefined : "demo"),
+    });
+    setPending(false);
+    if (!result.ok) {
+      setError(result.message);
+      return;
+    }
     await refresh();
     router.push("/dashboard");
     router.refresh();
@@ -28,8 +42,10 @@ export default function SignUpPage() {
 
   return (
     <Card>
-      <h1 className="font-serif text-2xl text-navy">Create a demo account</h1>
-      <p className="mt-2 text-sm text-demo">{DEMO_AUTH_NOTE}</p>
+      <h1 className="font-serif text-2xl text-navy">
+        {firebase ? "Create an account" : "Create a demo account"}
+      </h1>
+      <p className="mt-2 text-sm text-demo">{firebase ? FIREBASE_AUTH_NOTE : DEMO_AUTH_NOTE}</p>
       <form className="mt-6 space-y-4" onSubmit={submit}>
         <Input
           id="name"
@@ -50,11 +66,18 @@ export default function SignUpPage() {
           id="password"
           label="Password"
           type="password"
-          hint="Stored only in this browser for the prototype."
-          defaultValue=""
+          required={firebase}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          hint={firebase ? "At least 6 characters." : "Stored only in this browser for the prototype."}
         />
+        {error ? (
+          <p className="text-sm text-danger" role="alert">
+            {error}
+          </p>
+        ) : null}
         <Button type="submit" className="w-full" disabled={pending}>
-          {pending ? "Saving locally…" : "Enter the prototype"}
+          {pending ? "Creating account…" : firebase ? "Create account" : "Enter the prototype"}
         </Button>
       </form>
       <p className="mt-4 text-sm text-demo">

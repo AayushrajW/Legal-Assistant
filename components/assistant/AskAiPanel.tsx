@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { Alert } from "@/components/ui/Display";
 import type { ChatMessage } from "@/domain/chat";
+import { geminiReady } from "@/lib/features";
 import { chatService } from "@/services";
 import { Sparkles } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
@@ -46,7 +47,9 @@ export function AskAiPanel({ caseId }: { caseId: string }) {
         <Sparkles className="size-4 text-ai" aria-hidden />
         <div>
           <h2 className="font-serif text-lg text-navy">Ask AI</h2>
-          <p className="text-xs text-demo">Demo replies only · not a lawyer</p>
+          <p className="text-xs text-demo">
+            {geminiReady() ? "Gemini · not a lawyer" : "Demo replies only · not a lawyer"}
+          </p>
         </div>
       </div>
       <div className="min-h-0 flex-1 space-y-3 overflow-y-auto py-3" aria-live="polite">

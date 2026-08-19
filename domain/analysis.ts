@@ -46,7 +46,7 @@ export interface LegalInfoItem {
   id: string;
   title: string;
   summary: string;
-  verification: "demo_unverified";
+  verification: "demo_unverified" | "model_unverified";
 }
 
 export interface SourceItem {
