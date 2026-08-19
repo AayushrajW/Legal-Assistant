@@ -1,14 +1,13 @@
-import { APP_NAME } from "@/lib/constants";
+import { BrandMark } from "@/components/layout/BrandMark";
+import { APP_NAME, APP_TAGLINE } from "@/lib/constants";
 import Link from "next/link";
 
 export function MarketingHeader() {
   return (
     <header className="border-b border-border bg-surface/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="font-serif text-xl text-navy">
-          {APP_NAME}
-        </Link>
-        <nav className="flex items-center gap-2 text-sm font-medium">
+        <BrandMark href="/" />
+        <nav className="flex items-center gap-2 text-sm font-semibold">
           <Link href="/#how-it-works" className="hidden min-h-11 items-center px-3 text-navy sm:inline-flex">
             How it works
           </Link>
@@ -17,7 +16,7 @@ export function MarketingHeader() {
           </Link>
           <Link
             href="/sign-up"
-            className="inline-flex min-h-11 items-center rounded-md bg-navy px-4 text-white"
+            className="inline-flex min-h-11 items-center rounded-xl bg-accent px-4 text-white"
           >
             Get started
           </Link>
@@ -32,10 +31,8 @@ export function MarketingFooter() {
     <footer className="border-t border-border bg-navy text-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
         <div>
-          <p className="font-serif text-lg">{APP_NAME}</p>
-          <p className="mt-2 text-sm text-white/75">
-            A citizen-first way to read confusing papers. Not a law firm.
-          </p>
+          <p className="text-lg font-extrabold">{APP_NAME}</p>
+          <p className="mt-1 text-sm text-white/70">{APP_TAGLINE}</p>
         </div>
         <div className="text-sm text-white/80">
           <p className="font-semibold text-white">Official starting points</p>
@@ -54,7 +51,7 @@ export function MarketingFooter() {
         </div>
         <p className="text-sm text-white/70">
           NyayaSetu explains and organises information. It is not a lawyer and does not give
-          legal advice. Demo content in this prototype is fictional.
+          legal advice.
         </p>
       </div>
     </footer>

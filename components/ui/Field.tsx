@@ -26,7 +26,7 @@ export function Input({
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
         className={cn(
-          "min-h-11 w-full rounded-md border bg-surface px-3 text-base text-ink shadow-none outline-none transition-colors placeholder:text-demo",
+          "min-h-11 w-full rounded-xl border bg-surface px-3 text-base text-ink shadow-none outline-none transition-colors placeholder:text-demo",
           error ? "border-danger" : "border-border focus:border-navy",
           className,
         )}
@@ -64,7 +64,7 @@ export function Textarea({
         aria-invalid={Boolean(error)}
         aria-describedby={error ? `${id}-error` : hint ? `${id}-hint` : undefined}
         className={cn(
-          "min-h-32 w-full rounded-md border bg-surface px-3 py-2.5 text-base text-ink outline-none placeholder:text-demo",
+          "min-h-32 w-full rounded-xl border bg-surface px-3 py-2.5 text-base text-ink outline-none placeholder:text-demo",
           error ? "border-danger" : "border-border focus:border-navy",
           className,
         )}
@@ -102,7 +102,7 @@ export function Select({
         id={id}
         aria-invalid={Boolean(error)}
         className={cn(
-          "min-h-11 w-full rounded-md border border-border bg-surface px-3 text-base text-ink outline-none focus:border-navy",
+          "min-h-11 w-full rounded-xl border border-border bg-surface px-3 text-base text-ink outline-none focus:border-navy",
           className,
         )}
         {...props}

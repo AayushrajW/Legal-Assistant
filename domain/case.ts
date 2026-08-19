@@ -41,9 +41,9 @@ export interface CaseRecord {
 
 export const CASE_STATUS_LABEL: Record<CaseStatus, string> = {
   draft: "Draft",
-  processing: "Reading your papers",
-  ready: "Explanation ready",
-  needs_more_info: "Needs more detail",
+  processing: "In Progress",
+  ready: "Analysis Complete",
+  needs_more_info: "Awaiting Action",
   error: "Could not finish",
 };
 

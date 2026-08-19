@@ -39,7 +39,7 @@ function SignInForm() {
 
   return (
     <Card>
-      <h1 className="font-serif text-2xl text-navy">Sign in</h1>
+      <h1 className="text-2xl font-extrabold text-navy">Sign in</h1>
       <p className="mt-2 text-sm text-demo">{firebase ? FIREBASE_AUTH_NOTE : DEMO_AUTH_NOTE}</p>
       <form className="mt-6 space-y-4" onSubmit={submit}>
         <Input
@@ -65,7 +65,7 @@ function SignInForm() {
             {error}
           </p>
         ) : null}
-        <Button type="submit" className="w-full" disabled={pending}>
+        <Button type="submit" variant="accent" className="w-full" disabled={pending}>
           {pending ? "Signing in…" : "Continue"}
         </Button>
       </form>
