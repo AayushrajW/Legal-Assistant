@@ -32,6 +32,7 @@ export interface CreateCaseInput {
     byteSize: number;
     kind: UploadedDocument["kind"];
     previewUrl?: string;
+    file?: File;
   };
   description?: Omit<ProblemDescription, "caseId">;
 }
@@ -51,6 +52,7 @@ export interface DocumentService {
 export interface AnalysisService {
   getAnalysis(caseId: CaseId): Promise<ServiceResult<CaseAnalysis>>;
   startProcessing(caseId: CaseId): Promise<ServiceResult<CaseAnalysis>>;
+  saveAnalysis(analysis: CaseAnalysis): Promise<ServiceResult<CaseAnalysis>>;
 }
 
 export interface ChatService {

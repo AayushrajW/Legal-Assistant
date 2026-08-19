@@ -10,7 +10,7 @@ export interface UploadedDocument {
   byteSize: number;
   kind: "pdf" | "image" | "other";
   previewUrl?: string;
-  uploadStatus: "local_only" | "simulated";
+  uploadStatus: "local_only" | "simulated" | "uploaded";
 }
 
 export interface ProblemDescription {

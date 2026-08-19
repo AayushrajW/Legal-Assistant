@@ -91,7 +91,7 @@ export default function NewCasePage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="font-serif text-3xl text-navy">Start a case</h1>
+      <h1 className="text-3xl font-extrabold text-navy">Start a case</h1>
       <p className="mt-2 text-sm text-demo">
         Files stay in this browser for the prototype. They are not uploaded to cloud storage.
       </p>
@@ -112,13 +112,13 @@ export default function NewCasePage() {
               key={value}
               type="button"
               onClick={() => setMode(value)}
-              className={`rounded-lg border p-4 text-left ${mode === value ? "border-navy bg-navy/5" : "border-border bg-surface"}`}
+              className={`rounded-2xl border p-4 text-left ${mode === value ? "border-accent bg-accent/5" : "border-border bg-surface"}`}
             >
               <p className="font-medium text-navy">{label}</p>
               <p className="mt-1 text-sm text-demo">{hint}</p>
             </button>
           ))}
-          <Button className="mt-2" onClick={nextFromStart}>
+          <Button className="mt-2" variant="accent" onClick={nextFromStart}>
             Continue
           </Button>
         </div>
@@ -186,7 +186,9 @@ export default function NewCasePage() {
             <Button variant="secondary" onClick={() => setStep(0)}>
               Back
             </Button>
-            <Button onClick={nextFromDetails}>Review</Button>
+            <Button variant="accent" onClick={nextFromDetails}>
+              Review
+            </Button>
           </div>
         </div>
       ) : null}
@@ -221,7 +223,7 @@ export default function NewCasePage() {
             <Button variant="secondary" onClick={() => setStep(1)}>
               Back
             </Button>
-            <Button onClick={() => void submit()} disabled={pending}>
+            <Button variant="accent" onClick={() => void submit()} disabled={pending}>
               {pending ? "Saving locally…" : "Create case"}
             </Button>
           </div>

@@ -2,7 +2,17 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { SESSION_COOKIE } from "@/lib/constants";
 
-const protectedPrefixes = ["/dashboard", "/cases", "/lawyers"];
+const protectedPrefixes = [
+  "/dashboard",
+  "/cases",
+  "/lawyers",
+  "/messages",
+  "/resources",
+  "/legal-aid",
+  "/documents",
+  "/bookmarks",
+  "/settings",
+];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -28,5 +38,26 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/dashboard", "/cases/:path*", "/cases", "/lawyers/:path*", "/lawyers", "/sign-in", "/sign-up"],
+  matcher: [
+    "/dashboard/:path*",
+    "/dashboard",
+    "/cases/:path*",
+    "/cases",
+    "/lawyers/:path*",
+    "/lawyers",
+    "/messages/:path*",
+    "/messages",
+    "/resources/:path*",
+    "/resources",
+    "/legal-aid/:path*",
+    "/legal-aid",
+    "/documents/:path*",
+    "/documents",
+    "/bookmarks/:path*",
+    "/bookmarks",
+    "/settings/:path*",
+    "/settings",
+    "/sign-in",
+    "/sign-up",
+  ],
 };

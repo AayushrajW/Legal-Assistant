@@ -1,8 +1,13 @@
-import { mockAnalysisService } from "./mock/analysis";
-import { mockAuthService } from "./mock/auth";
-import { mockCaseRepository, mockDocumentService } from "./mock/cases";
-import { mockChatService } from "./mock/chat";
-import { mockLawyerRepository } from "./mock/lawyers";
+import { geminiAnalysisService, geminiChatService } from "@/services/gemini/client";
+import { fallbackAnalysisService } from "@/services/analysis/fallback";
+import { geminiReady } from "@/lib/features";
+import { mockChatService } from "@/services/mock/chat";
+import {
+  authImpl,
+  caseRepo,
+  documentRepo,
+  lawyerRepo,
+} from "@/services/runtime";
 import type {
   AnalysisService,
   AuthService,
@@ -10,12 +15,15 @@ import type {
   ChatService,
   DocumentService,
   LawyerRepository,
-} from "./types";
+} from "@/services/types";
 
-/** Composition root. Swap implementations here when Firebase / Gemini land. */
-export const authService: AuthService = mockAuthService;
-export const caseRepository: CaseRepository = mockCaseRepository;
-export const documentService: DocumentService = mockDocumentService;
-export const analysisService: AnalysisService = mockAnalysisService;
-export const chatService: ChatService = mockChatService;
-export const lawyerRepository: LawyerRepository = mockLawyerRepository;
+export const authService: AuthService = authImpl();
+export const caseRepository: CaseRepository = caseRepo();
+export const documentService: DocumentService = documentRepo();
+export const lawyerRepository: LawyerRepository = lawyerRepo();
+
+export const analysisService: AnalysisService = geminiReady()
+  ? geminiAnalysisService
+  : fallbackAnalysisService;
+
+export const chatService: ChatService = geminiReady() ? geminiChatService : mockChatService;

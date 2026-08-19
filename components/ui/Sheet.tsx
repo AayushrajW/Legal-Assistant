@@ -40,11 +40,11 @@ export function Sheet({
         aria-modal="true"
         aria-labelledby="sheet-title"
         className={cn(
-          "relative z-10 flex max-h-[88vh] w-full flex-col rounded-t-xl border border-border bg-surface shadow-lg md:max-w-lg md:rounded-xl",
+          "relative z-10 flex max-h-[88vh] w-full flex-col rounded-t-2xl border border-border bg-surface shadow-lg md:max-w-lg md:rounded-2xl",
         )}
       >
         <div className="flex items-center justify-between border-b border-border px-4 py-3">
-          <h2 id="sheet-title" className="font-serif text-lg text-navy">
+          <h2 id="sheet-title" className="text-lg font-bold text-navy">
             {title}
           </h2>
           <IconButton label="Close" onClick={onClose}>

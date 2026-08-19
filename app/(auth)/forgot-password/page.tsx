@@ -25,7 +25,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <Card>
-      <h1 className="font-serif text-2xl text-navy">Reset password</h1>
+      <h1 className="text-2xl font-extrabold text-navy">Reset password</h1>
       <form className="mt-6 space-y-4" onSubmit={submit}>
         <Input
           id="email"
@@ -45,7 +45,7 @@ export default function ForgotPasswordPage() {
             {message}
           </Alert>
         ) : null}
-        <Button type="submit" className="w-full">
+        <Button type="submit" variant="accent" className="w-full">
           Continue
         </Button>
       </form>
